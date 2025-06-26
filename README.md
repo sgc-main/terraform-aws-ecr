@@ -1,7 +1,7 @@
 
 # Terraform AWS ECR Replication Module
 
-This Terraform module manages AWS Elastic Container Registry (ECR) repositories with advanced support for **cross-region** and **cross-account replication**, including repository lifecycle policies and both repository- and registry-level permissions.
+This Terraform module manages AWS Elastic Container Registry (ECR) repositories with advanced support for **cross-region** and **cross-account replication**, including repository lifecycle policies and both repository and registry-level permissions.
 
 ## Features
 
@@ -12,7 +12,7 @@ This Terraform module manages AWS Elastic Container Registry (ECR) repositories 
 - Dynamically generates replication configuration for:
   - In-account (cross-region) replication.
   - Cross-account (to peer AWS account) replication.
-- All destinations are automatically calculated from variables—no need to manually enumerate every destination.
+- All destinations are automatically calculated from variables, no need to manually enumerate every destination.
 
 ## References
 
