@@ -1,0 +1,74 @@
+formatter: markdown table
+
+output-values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  by: name
+
+output:
+  file: README.md
+  mode: inject
+
+settings:
+  color: true
+  escape: true
+  hide-empty: true
+  indent: 2
+  required: false
+  sensitive: true
+
+content: |-
+  ## Examples
+
+  ### Source Account: Cross-Account Replication
+
+  ```hcl
+  module "ecr_replication" {
+    source = "./examples/source-cross-account"
+  }
+  ```
+
+  main.tf
+  ```hcl
+  {{ include "examples/source-cross-account/main.tf" }}
+  ```  
+
+
+  ### Destination Account: Cross-Account Replication Setup
+
+  ```hcl
+  module "ecr_replication" {
+    source = "./examples/destination-cross-account"
+  }
+  ```
+
+  main.tf
+  ```hcl
+  {{ include "examples/destination-cross-account/main.tf" }}
+  ```
+
+  ### In-Account Cross-Region Replication
+
+  ```hcl
+  module "ecr_replication" {
+    source = "./examples/in-account-cross-region"
+  }
+  ```
+
+  main.tf
+  ```hcl
+  {{ include "examples/in-account-cross-region/main.tf" }}
+  ```
+
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
