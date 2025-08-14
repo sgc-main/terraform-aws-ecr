@@ -6,7 +6,7 @@ module "ecr_replication" {
   create_repos           = true
   lifecycle_policy       = null
   account_id             = "222222222222"
-  peer_account_id        = "111111111111"
+  peer_account_ids       = ["111111111111"]
   replication_regions    = []
   destination_regions    = []
   create_registry_policy = true

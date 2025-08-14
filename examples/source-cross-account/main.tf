@@ -26,7 +26,7 @@ module "ecr_replication" {
 EOF
 
   account_id             = "111111111111"
-  peer_account_id        = "222222222222"
+  peer_account_ids       = ["222222222222"]
   replication_regions    = []
   destination_regions    = ["us-west-2", "eu-west-1"]
   create_registry_policy = false

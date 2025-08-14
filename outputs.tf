@@ -20,5 +20,5 @@ output "replication_configuration" {
 
 output "registry_policy" {
   description = "The registry policy applied to this ECR registry (if any)."
-  value = try(aws_ecr_registry_policy.allow_replication[0].policy, null)
+  value = aws_ecr_registry_policy.allow_replication
 }

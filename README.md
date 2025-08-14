@@ -60,7 +60,7 @@ module "ecr_replication" {
 EOF
 
   account_id             = "111111111111"
-  peer_account_id        = "222222222222"
+  peer_account_ids       = ["222222222222"]
   replication_regions    = []
   destination_regions    = ["us-west-2", "eu-west-1"]
   create_registry_policy = false
@@ -87,7 +87,7 @@ module "ecr_replication" {
   create_repos           = true
   lifecycle_policy       = null
   account_id             = "222222222222"
-  peer_account_id        = "111111111111"
+  peer_account_ids       = ["111111111111"]
   replication_regions    = []
   destination_regions    = []
   create_registry_policy = true
@@ -113,7 +113,7 @@ module "ecr_replication" {
   create_repos           = true
 
   account_id             = "111111111111"
-  peer_account_id        = null
+  peer_account_ids       = []
   replication_regions    = ["us-west-2", "eu-west-1"]
   destination_regions    = []
   create_registry_policy = false
@@ -147,16 +147,16 @@ module "ecr_replication" {
 
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
-| <a name="input_account_id"></a> [account\_id](#input\_account\_id) | This account's AWS account ID | `string` | `null` |
-| <a name="input_create_registry_policy"></a> [create\_registry\_policy](#input\_create\_registry\_policy) | Should create registry policy for cross-account replication? | `bool` | `true` |
-| <a name="input_create_repos"></a> [create\_repos](#input\_create\_repos) | Should create repositories? | `bool` | `true` |
-| <a name="input_destination_regions"></a> [destination\_regions](#input\_destination\_regions) | Regions to replicate to in peer account (cross-account, optional) | `list(string)` | `[]` |
-| <a name="input_lifecycle_policy"></a> [lifecycle\_policy](#input\_lifecycle\_policy) | Optional lifecycle policy JSON | `string` | `null` |
-| <a name="input_peer_account_id"></a> [peer\_account\_id](#input\_peer\_account\_id) | Destination AWS Account ID for replication | `string` | `null` |
-| <a name="input_replication_id"></a> [replication\_id](#input\_replication\_id) | Either 'source' or 'destination' | `string` | n/a |
-| <a name="input_replication_regions"></a> [replication\_regions](#input\_replication\_regions) | Regions to replicate to (in-account, optional) | `list(string)` | `[]` |
-| <a name="input_repositories"></a> [repositories](#input\_repositories) | List of ECR repo names | `list(string)` | n/a |
-| <a name="input_tags"></a> [tags](#input\_tags) | Tags for ECR repo | `map(string)` | `{}` |
+| <a name="input_account_id"></a> [account\_id](#input\_account\_id) | This (current) AWS account ID. | `string` | n/a |
+| <a name="input_create_registry_policy"></a> [create\_registry\_policy](#input\_create\_registry\_policy) | Create registry-level policy to allow cross-account replication (destination only). | `bool` | `true` |
+| <a name="input_create_repos"></a> [create\_repos](#input\_create\_repos) | Whether to create/manage repositories in this account/region. | `bool` | `true` |
+| <a name="input_destination_regions"></a> [destination\_regions](#input\_destination\_regions) | Regions to replicate to in PEER accounts (cross-account). | `list(string)` | `[]` |
+| <a name="input_lifecycle_policy"></a> [lifecycle\_policy](#input\_lifecycle\_policy) | Optional ECR lifecycle policy JSON string. Set null to disable. | `string` | `null` |
+| <a name="input_peer_account_ids"></a> [peer\_account\_ids](#input\_peer\_account\_ids) | List of peer AWS account IDs (sources for destination, or destinations for source). | `list(string)` | `[]` |
+| <a name="input_replication_id"></a> [replication\_id](#input\_replication\_id) | Module context: 'source' or 'destination'. | `string` | n/a |
+| <a name="input_replication_regions"></a> [replication\_regions](#input\_replication\_regions) | Regions to replicate to within the SAME account (in-account cross-region, optional). | `list(string)` | `[]` |
+| <a name="input_repositories"></a> [repositories](#input\_repositories) | List of ECR repository names to create/manage. | `list(string)` | n/a |
+| <a name="input_tags"></a> [tags](#input\_tags) | Tags applied to all repositories. | `map(string)` | `{}` |
 
 ## Outputs
 
